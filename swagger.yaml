@@ -8,7 +8,7 @@ info:
     https://drive.google.com/=sharing
 
   version: 1.0.0
-  title: SLT LiveKit
+  title: SLT Lynked
   termsOfService: https://livekit.bigzkoop.com/
   contact:
     email: contact@bigzkoop.com
@@ -81,6 +81,8 @@ paths:
       responses:
         200:
           description:
+      security:
+        - bearerAuth: {}
   /api/v1/room/delete/{roomId}:
     delete:
       tags:
@@ -99,7 +101,9 @@ paths:
       responses:
         200:
           description: Room deleted
-          
+      security:
+        - bearerAuth: {}
+        
   /api/v1/participants/join:
     post:
       tags:
@@ -512,10 +516,14 @@ definitions:
     xml:
       name: Participants
       
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header    
       
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
-basePath: /BigZkoop6/bg-pos-master/1.0.0
 schemes:
  - https
  - http
